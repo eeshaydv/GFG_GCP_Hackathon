@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_notes"
+        android:icon="@drawable/calender"
+        android:title="NOTES"/>
+    <item
+        android:id="@+id/nav_documents"
+        android:icon="@drawable/records"
+        android:title="RECORDS"/>
+    <item
+        android:id="@+id/nav_Medicines"
+        android:icon="@drawable/medicines"
+        android:title="MEDICINES"/>
+    <item
+        android:id="@+id/nav_follow_ups"
+        android:icon="@drawable/followup"
+        android:title="FOLLOW UPS"/>
+    <item
+        android:id="@+id/nav_vitals"
+        android:icon="@drawable/vitals"
+        android:title="VITALS"/>
+
+
+
+</menu>
