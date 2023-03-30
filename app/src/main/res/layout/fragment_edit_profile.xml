@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.EditProfileFragment">
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -94,12 +99,12 @@
                                     android:layout_height="wrap_content">
                                     <EditText
                                         android:id="@+id/name"
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="280dp"
                                         android:layout_height="40dp"
                                         android:layout_marginLeft="2dp"
                                         android:gravity="left"
                                         android:backgroundTint="@color/colorPrimaryDark"
-                                        android:hint=" Name"
+                                        android:hint="Name"
                                         android:textSize="15sp" />
                                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -126,7 +131,7 @@
 
                                     <EditText
                                         android:id="@+id/number"
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="280dp"
                                         android:layout_height="40dp"
                                         android:layout_marginLeft="2dp"
                                         android:gravity="left"
@@ -160,7 +165,7 @@
 
                                     <EditText
                                         android:id="@+id/email"
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="280dp"
                                         android:layout_height="40dp"
                                         android:layout_marginLeft="2dp"
                                         android:gravity="left"
@@ -194,7 +199,7 @@
 
                                     <EditText
                                         android:id="@+id/bloodgroup"
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="280dp"
                                         android:layout_height="40dp"
                                         android:layout_marginLeft="2dp"
                                         android:gravity="left"
@@ -226,7 +231,7 @@
 
                                     <EditText
                                         android:id="@+id/gender"
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="280dp"
                                         android:layout_height="40dp"
                                         android:layout_marginLeft="2dp"
                                         android:gravity="left"
@@ -243,6 +248,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="left"
+                                android:layout_marginBottom="16dp"
                                 android:gravity="center_vertical"
                                 android:paddingTop="4dp">
 
@@ -261,7 +267,7 @@
 
                                     <EditText
                                         android:id="@+id/age"
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="280dp"
                                         android:layout_height="40dp"
                                         android:layout_marginLeft="2dp"
                                         android:gravity="left"
@@ -307,3 +313,4 @@
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>
+</FrameLayout>

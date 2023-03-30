@@ -3,10 +3,17 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_share"
-        android:icon="@drawable/share"
+        android:id="@+id/edit"
+        android:icon="@drawable/ic_baseline_edit_24"
         android:orderInCategory="100"
-        android:title="Share Room Id"
+        android:title="EDIT"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/delete"
+        android:icon="@drawable/ic_baseline_delete_24"
+        android:orderInCategory="100"
+        android:title="DELETE"
         app:showAsAction="never" />
 
 </menu>
