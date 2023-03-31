@@ -11,6 +11,13 @@
     <color name="yellow">#FFEB3B</color>
     <color name="back">#9C9AA7</color>
     <color name="red">#ff0000</color>
+
+    <color name="grey">#464646</color>
+
+    <color name="app_blue">#217398</color>
+    <color name="app_black">#2A2A2A</color>
+    <color name="app_black_click">#3f3f3f</color>
+
     <array name="colors">
         <item name="all" type="color">#fc6177</item>
         <item name="design" type="color">#c467f4</item>

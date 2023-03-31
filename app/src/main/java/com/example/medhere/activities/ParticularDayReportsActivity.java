@@ -1,4 +1,4 @@
-package com.example.medhere.Activities;
+package com.example.medhere.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

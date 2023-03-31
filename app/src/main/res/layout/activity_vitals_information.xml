@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="24dp"
     android:background="#EAEAEA"
-    tools:context=".Activities.VitalsInformationActivity">
+    tools:context=".activities.VitalsInformationActivity">
     <LinearLayout
 
         android:layout_width="match_parent"

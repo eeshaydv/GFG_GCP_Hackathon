@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.HealthNotesFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/app_blue"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activity_main_text_day_of_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:includeFontPadding="false"
+                android:text="date"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white"
+                android:textSize="24sp"/>
+
+            <LinearLayout
+                android:id="@+id/activity_main_view_separator"
+                android:layout_margin="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_main_text_day_of_month"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="70dp"
+                    android:layout_height="2dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/white"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_date_range_white_24dp"/>
+
+                <View
+                    android:layout_width="70dp"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/white"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activity_main_text_day_of_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_main_view_separator"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="week day"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/white"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:id="@+id/notes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_main_text_day_of_week"
+                android:layout_centerHorizontal="true"
+                android:padding="8dp"
+                android:layout_marginTop="10dp"
+                android:text="I am currently in the Pre-Final year of my college and pursuing a Bachelor of Technology in
+Electronics and Communication Engineering at IIT(ISM) Dhanbad. Even though I am
+majoring in Electronics, I got pulled into Competitive Programming and Software Engineering
+has since then been my passion. Software engineering requires problem-solving ability,
+provides continuous learning opportunities, demands good communication skills, and I feel
+my interests belong firmly within it."
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+        </RelativeLayout>
+
+        <com.example.medhere.views.CustomCalendarView
+            android:id="@+id/activity_main_view_custom_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</FrameLayout>

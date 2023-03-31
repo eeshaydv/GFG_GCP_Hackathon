@@ -1,4 +1,4 @@
-package com.example.medhere.Activities;
+package com.example.medhere.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.medhere.R;
 
-public class FollowUpsInputActivity extends AppCompatActivity {
+public class DetectedMedicinesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_follow_ups_input);
+        setContentView(R.layout.activity_detected_medicines);
     }
 }

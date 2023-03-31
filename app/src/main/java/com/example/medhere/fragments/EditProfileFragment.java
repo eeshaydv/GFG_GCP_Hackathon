@@ -1,4 +1,4 @@
-package com.example.medhere.Fragments;
+package com.example.medhere.fragments;
 
 import android.os.Bundle;
 

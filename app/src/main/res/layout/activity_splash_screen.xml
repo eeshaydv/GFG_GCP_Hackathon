@@ -6,6 +6,6 @@
     android:layout_height="160dp"
     android:layout_gravity="center"
     android:background="@drawable/icon"
-    tools:context=".OnBoardingActivities.SplashScreenActivity">
+    tools:context=".onBoardingActivities.SplashScreenActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

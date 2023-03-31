@@ -1,4 +1,4 @@
-package com.example.medhere.Fragments;
+package com.example.medhere.fragments;
 
 import android.os.Bundle;
 
@@ -9,13 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.medhere.R;
+import com.example.medhere.interfaces.OnDateSelectedListener;
+import com.example.medhere.objects.CalendarDate;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link PastRecordsFragment#newInstance} factory method to
+ * Use the {@link HealthNotesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PastRecordsFragment extends Fragment {
+public class HealthNotesFragment extends Fragment implements OnDateSelectedListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +28,7 @@ public class PastRecordsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public PastRecordsFragment() {
+    public HealthNotesFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +38,11 @@ public class PastRecordsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment PastRecordsFragment.
+     * @return A new instance of fragment HealthNotesFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PastRecordsFragment newInstance(String param1, String param2) {
-        PastRecordsFragment fragment = new PastRecordsFragment();
+    public static HealthNotesFragment newInstance(String param1, String param2) {
+        HealthNotesFragment fragment = new HealthNotesFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +63,11 @@ public class PastRecordsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_past_records, container, false);
+        return inflater.inflate(R.layout.fragment_health_notes, container, false);
+    }
+
+    @Override
+    public void onDateSelected(CalendarDate date) {
+
     }
 }

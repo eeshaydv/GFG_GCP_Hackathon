@@ -1,4 +1,4 @@
-package com.example.medhere.Activities;
+package com.example.medhere.onBoardingActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.medhere.R;
 
-public class DetectedMedicinesActivity extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detected_medicines);
+        setContentView(R.layout.activity_splash_screen);
     }
 }
