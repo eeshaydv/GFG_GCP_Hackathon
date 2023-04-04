@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ParticularDayReportsActivity"></activity>
+        <activity android:name=".activities.IndividualVitalInformationActivity"></activity>
+        <activity android:name=".activities.ParticularDayReportsActivity" />
         <activity android:name=".activities.VitalsInformationActivity" />
         <activity android:name=".activities.FollowUpsInputActivity" />
         <activity android:name=".activities.DetectedMedicinesActivity" />
