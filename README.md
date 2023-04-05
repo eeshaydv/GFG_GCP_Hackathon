@@ -1,5 +1,4 @@
-# medHERe
- ============= 
+# medHERe 
 
 ## Designing a HealthCare Android Application for :
 * reminding users to take medicines on time by extracting information from their medical prescriptions
