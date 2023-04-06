@@ -15,7 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.medhere.R;
 import com.example.medhere.adapter.CalendarViewPagerAdapter;
 import com.example.medhere.interfaces.OnDateSelectedListener;
-import com.example.medhere.objects.CalendarMonth;
+import com.example.medhere.models.CalendarMonth;
 
 import java.util.ArrayList;
 import java.util.Calendar;

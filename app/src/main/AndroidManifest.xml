@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.medhere">
 
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".authentication.ForgotPasswordActivity"></activity>
+        <activity android:name=".activities.FingerPrintActivity"></activity>
+        <activity android:name=".activities.SettingsActivity" />
+        <activity android:name=".authentication.ForgotPasswordActivity" />
         <activity android:name=".authentication.VerificationActivity" />
         <activity android:name=".activities.IndividualVitalInformationActivity" />
         <activity android:name=".activities.ParticularDayReportsActivity" />
@@ -17,19 +21,18 @@
         <activity android:name=".activities.FollowUpsInputActivity" />
         <activity android:name=".activities.DetectedMedicinesActivity" />
         <activity android:name=".onBoardingActivities.UserDetailsActivity" />
-        <activity android:name=".onBoardingActivities.IntroActivity" />
-        <activity android:name=".onBoardingActivities.SplashScreenActivity" />
-        <activity android:name=".authentication.LoginActivity" />
-        <activity android:name=".authentication.SignUpActivity" >
+        <activity android:name=".onBoardingActivities.IntroActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MainActivity">
-
+        <activity android:name=".onBoardingActivities.SplashScreen" />
+        <activity android:name=".authentication.LoginActivity" />
+        <activity android:name=".authentication.SignUpActivity">
         </activity>
+        <activity android:name=".activities.MainActivity" />
     </application>
 
 </manifest>

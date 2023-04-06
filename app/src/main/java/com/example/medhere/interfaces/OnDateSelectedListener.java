@@ -1,6 +1,6 @@
 package com.example.medhere.interfaces;
 
-import com.example.medhere.objects.CalendarDate;
+import com.example.medhere.models.CalendarDate;
 
 public interface OnDateSelectedListener {
 

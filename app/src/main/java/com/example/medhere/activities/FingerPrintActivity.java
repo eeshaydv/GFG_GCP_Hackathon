@@ -1,4 +1,4 @@
-package com.example.medhere.onBoardingActivities;
+package com.example.medhere.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.medhere.R;
 
-public class SplashScreenActivity extends AppCompatActivity {
+public class FingerPrintActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
+        setContentView(R.layout.activity_finger_print);
     }
 }

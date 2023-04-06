@@ -8,8 +8,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.medhere.interfaces.OnDateSelectedListener;
 import com.example.medhere.interfaces.OnDayViewClickListener;
-import com.example.medhere.objects.CalendarDate;
-import com.example.medhere.objects.CalendarMonth;
+import com.example.medhere.models.CalendarDate;
+import com.example.medhere.models.CalendarMonth;
 import com.example.medhere.views.CalendarDayView;
 import com.example.medhere.views.CalendarMonthView;
 

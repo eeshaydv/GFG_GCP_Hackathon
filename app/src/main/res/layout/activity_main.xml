@@ -30,15 +30,24 @@
                 android:layout_toLeftOf="@id/thumbnail"/>
 
             <ImageView
-                android:id="@+id/thumbnail"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_baseline_notifications_none_24"
+                android:id="@+id/settings"
                 android:layout_width="36dp"
-                android:clickable="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="8dp"
+                android:layout_height="36dp"
                 android:layout_alignParentRight="true"
-                android:layout_height="36dp" />
+                android:layout_marginRight="55dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:src="@drawable/ic_baseline_settings_24" />
+
+            <ImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="1dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:src="@drawable/ic_baseline_notifications_none_24" />
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
     <FrameLayout

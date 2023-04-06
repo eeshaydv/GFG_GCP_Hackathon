@@ -8,10 +8,9 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 
 import com.example.medhere.R;
-import com.example.medhere.adapter.CalendarViewPagerAdapter;
 import com.example.medhere.interfaces.OnDayViewClickListener;
-import com.example.medhere.objects.CalendarDate;
-import com.example.medhere.objects.CalendarMonth;
+import com.example.medhere.models.CalendarDate;
+import com.example.medhere.models.CalendarMonth;
 import com.example.medhere.utils.Utils;
 
 public class CalendarMonthView extends FrameLayout implements View.OnClickListener {

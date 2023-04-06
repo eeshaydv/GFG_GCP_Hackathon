@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 
 import com.example.medhere.R;
-import com.example.medhere.objects.CalendarDate;
+import com.example.medhere.models.CalendarDate;
 
 public class CalendarDayView extends LinearLayout {
 

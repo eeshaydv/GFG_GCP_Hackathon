@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.medhere.R;
 import com.example.medhere.interfaces.OnDateSelectedListener;
-import com.example.medhere.objects.CalendarDate;
+import com.example.medhere.models.CalendarDate;
 
 /**
  * A simple {@link Fragment} subclass.

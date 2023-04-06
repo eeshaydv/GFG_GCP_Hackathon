@@ -1,4 +1,4 @@
-package com.example.medhere.objects;
+package com.example.medhere.models;
 
 import com.example.medhere.utils.DateUtils;
 
