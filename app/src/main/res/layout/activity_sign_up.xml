@@ -99,6 +99,7 @@
                                     android:layout_width="40dp"
                                     android:layout_height="40dp"
                                     android:padding="10dp"
+                                    android:layout_gravity="center_vertical"
                                     android:src="@drawable/ic_profile"
                                     app:tint="@color/colorPrimaryDark" />
 
@@ -166,8 +167,7 @@
 
                                 <ImageView
                                     android:layout_width="40dp"
-                                    android:layout_height="50dp"
-                                    android:layout_marginBottom="8dp"
+                                    android:layout_height="40dp"
                                     android:padding="10dp"
                                     android:src="@drawable/password"
                                     app:tint="@color/colorPrimaryDark" />
@@ -205,7 +205,7 @@
                                     android:layout_width="40dp"
                                     android:layout_height="40dp"
                                     android:padding="10dp"
-                                    android:layout_marginBottom="14dp"                                    android:src="@drawable/password"
+                                    android:src="@drawable/password"
                                     app:tint="@color/colorPrimaryDark" />
 
                                 <com.google.android.material.textfield.TextInputLayout
@@ -263,7 +263,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/register_button"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="10dp"
                     android:id="@+id/login_text"
                     android:fontFamily="@font/droid_sans_chinese"
                     android:textColor="@color/colorPrimaryDark"
@@ -272,7 +272,23 @@
                     android:gravity="center_horizontal"
                     android:text="Already registered ? Login here"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text"
+                    android:padding="16dp"
+                    android:text="Or Use Google SignIn"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    />
 
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/google"
+                    android:id="@+id/google"/>
 
 
 

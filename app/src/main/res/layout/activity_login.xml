@@ -25,12 +25,11 @@
                 android:layout_height="250dp"
                 android:background="@color/colorPrimaryDark" />
 
-
             <RelativeLayout
                 android:id="@+id/rl_two_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp">
+                android:layout_marginTop="20dp">
                 <ImageView
                     android:layout_width="120dp"
                     android:layout_height="120dp"
@@ -43,8 +42,8 @@
                     android:id="@+id/tv_one_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text=" m e d H E R e "
-                    android:padding="8dp"
                     android:fontFamily="@font/droid_sans_chinese"
                     android:textAlignment="center"
                     android:textColor="#ffffff"
@@ -72,19 +71,19 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cv_one_login"
                         android:layout_width="match_parent"
-                        android:layout_height="320dp"
+                        android:layout_height="380dp"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="240dp"
+                        android:layout_marginTop="230dp"
                         android:elevation="10dp"
+                        android:foregroundGravity="center"
                         app:cardBackgroundColor="#fcfcfc"
                         app:cardCornerRadius="15dp"
                         app:cardElevation="15dp"
-                        android:foregroundGravity="center"
                         app:cardPreventCornerOverlap="false"
                         app:cardUseCompatPadding="true">
 
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:orientation="vertical">
@@ -99,23 +98,23 @@
                                 <ImageView
                                     android:layout_width="40dp"
                                     android:layout_height="40dp"
-                                    android:layout_marginTop="14dp"
                                     android:padding="10dp"
-                                    app:tint="@color/colorPrimaryDark"
-                                    android:src="@drawable/ic_email_24dp" />
-
+                                    android:src="@drawable/ic_email_24dp"
+                                    app:tint="@color/colorPrimaryDark" />
 
                                 <com.google.android.material.textfield.TextInputLayout
-                                    android:layout_marginTop="11dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content">
+
                                     <EditText
-                                        android:id="@+id/login_email"
+                                        android:id="@+id/email_login"
                                         android:layout_width="289dp"
                                         android:layout_height="40dp"
                                         android:layout_marginLeft="2dp"
-                                        android:gravity="left"
+                                        android:layout_marginTop="8dp"
+                                        android:fontFamily="@font/droid_sans_chinese"
                                         android:backgroundTint="@color/colorPrimaryDark"
+                                        android:gravity="left"
                                         android:hint=" Email"
                                         android:inputType="textEmailAddress"
                                         android:textSize="15sp" />
@@ -132,36 +131,32 @@
 
                                 <ImageView
                                     android:layout_width="40dp"
-                                    app:tint="@color/colorPrimaryDark"
-                                    android:layout_height="80dp"
-                                    android:layout_marginTop="1dp"
+                                    android:layout_height="40dp"
                                     android:padding="10dp"
-                                    android:src="@drawable/password" />
+                                    android:src="@drawable/password"
+                                    app:tint="@color/colorPrimaryDark" />
 
                                 <com.google.android.material.textfield.TextInputLayout
                                     android:layout_width="match_parent"
-                                    android:id="@+id/passwordNew"
-                                    app:passwordToggleEnabled="true"
-                                    android:layout_marginTop="10dp"
                                     android:layout_height="wrap_content"
-                                    >
+                                    android:layout_marginTop="4dp"
+                                    app:passwordToggleEnabled="true">
 
                                     <EditText
-                                        android:id="@+id/login_password"
+                                        android:id="@+id/password_login"
                                         android:layout_width="289dp"
                                         android:layout_height="40dp"
                                         android:layout_marginLeft="2dp"
-                                        android:gravity="left"
-                                        android:layout_marginBottom="24dp"
-                                        android:inputType="textPassword"
+                                        android:layout_marginBottom="0dp"
                                         android:backgroundTint="@color/colorPrimaryDark"
+                                        android:fontFamily="@font/droid_sans_chinese"
+                                        android:gravity="left"
                                         android:hint="Password"
+                                        android:inputType="textPassword"
                                         android:textSize="15sp" />
                                 </com.google.android.material.textfield.TextInputLayout>
 
-
                             </LinearLayout>
-
 
 
                         </LinearLayout>
@@ -171,15 +166,17 @@
 
 
 
+
                 <Button
                     android:layout_width="250dp"
                     android:layout_height="50dp"
                     android:layout_below="@id/cv_one_login"
-                    android:fontFamily="@font/droid_sans_chinese"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/button"
+                    android:fontFamily="@font/droid_sans_chinese"
                     android:gravity="center"
-                    android:layout_marginTop="-35dp"
+                    android:clickable="true"
+                    android:layout_marginTop="-38dp"
                     android:text="LOGIN"
                     android:textSize="25sp"
                     android:id="@+id/login_button"
@@ -189,42 +186,54 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/progress_bar"
-
                     android:visibility="gone"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/login_button"
-                    android:fontFamily="@font/droid_sans_chinese"
-                    android:background="?attr/selectableItemBackgroundBorderless"
                     android:layout_marginTop="10dp"
-                    android:id="@+id/register_account_link"
+                    android:id="@+id/register_text"
+                    android:fontFamily="@font/droid_sans_chinese"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
+                    android:clickable="true"
                     android:gravity="center_horizontal"
-                    android:text="Don't have an account? Create one"/>
-
-
-
-
-
-
+                    android:text="New User ? SignUp here"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/login_button"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/forgot_password"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16sp"
+                    android:clickable="true"
+                    android:gravity="center_horizontal"
+                    android:text="Forgot Password?"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/pass"
+                    android:id="@+id/text"
                     android:padding="16dp"
-                    android:text="Forgot password?"
+                    android:text="Or Use Google SignIn"
                     android:fontFamily="@font/droid_sans_chinese"
                     android:textColor="@color/colorPrimaryDark"
                     android:clickable="true"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     />
 
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/google"
+                    android:id="@+id/google"/>
+
 
 
 
             </LinearLayout>
+
 
 
 

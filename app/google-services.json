@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "757349906463",
+    "project_id": "medhere-2ccc9",
+    "storage_bucket": "medhere-2ccc9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757349906463:android:d910b2d3265aefe7163d2a",
+        "android_client_info": {
+          "package_name": "com.example.medhere"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "757349906463-9giigp0s702shn164cf77ebb42ha9vj7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.medhere",
+            "certificate_hash": "06ca7b0a1f675acbcdcad57e2a799cb3ae6bb754"
+          }
+        },
+        {
+          "client_id": "757349906463-dtaj3uimi8kv8qntkuq3qeheo2mlhijb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV2A4sY54d6BVip24iYWjHRHolz6TXF-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "757349906463-dtaj3uimi8kv8qntkuq3qeheo2mlhijb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
