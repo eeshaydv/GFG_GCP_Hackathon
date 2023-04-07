@@ -45,12 +45,7 @@ public class ProfileDetailsActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        if (restorePrefData()) {
 
-            Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class );
-            startActivity(mainActivity);
-            finish();
-        }
         setContentView(R.layout.activity_profile_details);
 
         name = findViewById(R.id.name);
@@ -168,11 +163,6 @@ public class ProfileDetailsActivity extends AppCompatActivity {
     }
 
 
-    private boolean restorePrefData() {
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
-        Boolean isIntroActivityOpnendBefore = pref.getBoolean("isProfileOpnend",false);
-        return  isIntroActivityOpnendBefore;
-    }
 
     private void savePrefsData() {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);

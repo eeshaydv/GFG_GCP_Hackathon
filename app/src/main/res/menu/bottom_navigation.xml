@@ -22,6 +22,4 @@
         android:icon="@drawable/vitals"
         android:title="VITALS"/>
 
-
-
 </menu>

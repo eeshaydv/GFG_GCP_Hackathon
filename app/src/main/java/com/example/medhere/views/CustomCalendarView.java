@@ -7,9 +7,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.annotation.AttrRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.medhere.R;
@@ -30,17 +27,17 @@ public class CustomCalendarView extends FrameLayout implements View.OnClickListe
     private CalendarViewPagerAdapter mViewPagerAdapter;
     private OnDateSelectedListener mListener;
 
-    public CustomCalendarView(@NonNull Context context) {
+    public CustomCalendarView( Context context) {
         super(context);
         init();
     }
 
-    public CustomCalendarView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public CustomCalendarView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public CustomCalendarView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
+    public CustomCalendarView( Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }

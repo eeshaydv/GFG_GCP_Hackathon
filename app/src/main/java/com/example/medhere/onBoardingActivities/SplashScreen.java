@@ -52,6 +52,8 @@ public class SplashScreen extends AppCompatActivity {
             snackbar.show();
 
         }
+        Splash ob=new Splash();
+        ob.start();
     }
 
     private boolean haveNetworkConnection() {

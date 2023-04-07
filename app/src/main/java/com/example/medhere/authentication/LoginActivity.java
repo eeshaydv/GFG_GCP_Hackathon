@@ -137,7 +137,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
             public void onComplete(Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     hideLoadingScreen();
-                    Intent intent=new Intent(LoginActivity.this, ProfileDetailsActivity.class);
+                    Intent intent=new Intent(LoginActivity.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }else{
@@ -173,7 +173,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         FirebaseUser Muser = mAuth.getCurrentUser();
         assert Muser != null;
         if (Muser.isEmailVerified()) {
-            startActivity(new Intent(LoginActivity.this, ProfileDetailsActivity.class));
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
         } else {
             startActivity(new Intent(LoginActivity.this, VerificationActivity.class));

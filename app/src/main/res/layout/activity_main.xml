@@ -87,7 +87,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_navigation"
         tools:ignore="MissingConstraints" />
-
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"

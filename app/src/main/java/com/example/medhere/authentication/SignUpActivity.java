@@ -125,7 +125,7 @@ public class SignUpActivity extends BaseActivity implements RegistrationContract
             public void onComplete(Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     hideLoadingScreen();
-                    Intent intent=new Intent(SignUpActivity.this, ProfileDetailsActivity.class);
+                    Intent intent=new Intent(SignUpActivity.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     FirebaseUser user =mAuth.getCurrentUser();

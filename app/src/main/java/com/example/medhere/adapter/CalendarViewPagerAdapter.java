@@ -110,6 +110,7 @@ public class CalendarViewPagerAdapter extends PagerAdapter implements OnDayViewC
         if (mListener != null) {
             mListener.onDateSelected(new CalendarDate(mSelectedDate));
         }
+
     }
 
     private void decorateSelection(String tag, boolean isSelected) {
