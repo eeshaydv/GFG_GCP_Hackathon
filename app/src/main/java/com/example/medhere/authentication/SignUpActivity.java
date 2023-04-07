@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.medhere.R;
 import com.example.medhere.activities.MainActivity;
+import com.example.medhere.activities.ProfileDetailsActivity;
 import com.example.medhere.base.BaseActivity;
 import com.example.medhere.firebase.register.RegistrationContract;
 import com.example.medhere.firebase.register.RegistrationPresenter;
@@ -124,7 +125,7 @@ public class SignUpActivity extends BaseActivity implements RegistrationContract
             public void onComplete(Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     hideLoadingScreen();
-                    Intent intent=new Intent(SignUpActivity.this, MainActivity.class);
+                    Intent intent=new Intent(SignUpActivity.this, ProfileDetailsActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     FirebaseUser user =mAuth.getCurrentUser();

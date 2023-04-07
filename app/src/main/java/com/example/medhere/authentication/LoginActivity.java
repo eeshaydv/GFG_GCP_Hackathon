@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.medhere.R;
 import com.example.medhere.activities.MainActivity;
+import com.example.medhere.activities.ProfileDetailsActivity;
 import com.example.medhere.base.BaseActivity;
 import com.example.medhere.firebase.login.LoginContract;
 import com.example.medhere.firebase.login.LoginPresenter;
@@ -136,10 +137,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
             public void onComplete(Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     hideLoadingScreen();
-                    Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                    Intent intent=new Intent(LoginActivity.this, ProfileDetailsActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
-                    FirebaseUser user =mAuth.getCurrentUser();
                 }else{
                     hideLoadingScreen();
                     Toast.makeText(LoginActivity.this,"SignIn Successful",Toast.LENGTH_LONG).show();
@@ -173,7 +173,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         FirebaseUser Muser = mAuth.getCurrentUser();
         assert Muser != null;
         if (Muser.isEmailVerified()) {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            startActivity(new Intent(LoginActivity.this, ProfileDetailsActivity.class));
             finish();
         } else {
             startActivity(new Intent(LoginActivity.this, VerificationActivity.class));
