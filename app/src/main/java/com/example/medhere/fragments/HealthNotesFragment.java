@@ -2,28 +2,23 @@ package com.example.medhere.fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.medhere.R;
-import com.example.medhere.interfaces.OnDateSelectedListener;
-import com.example.medhere.models.CalendarDate;
 import com.example.medhere.views.CustomCalendarView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,16 +27,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.Nullable;
 
-import java.util.ArrayList;
+import java.util.Calendar;
 
-public class HealthNotesFragment extends Fragment implements OnDateSelectedListener {
+public class HealthNotesFragment extends Fragment  {
 
     private DatabaseReference rootRef;
 
-    private CustomCalendarView mCustomCalendar;
     private TextView date, day, notes;
-    private ArrayList<CharSequence> arrayListCollection = new ArrayList<>();
-    private ArrayAdapter<CharSequence> adapter;
     private EditText txt;
     private String prevNotes = "";
 
@@ -52,40 +44,51 @@ public class HealthNotesFragment extends Fragment implements OnDateSelectedListe
         View v = inflater.inflate(R.layout.fragment_health_notes, null);
 
         date = v.findViewById(R.id.date);
-        day = v.findViewById(R.id.day);
         notes = v.findViewById(R.id.notes);
-
         rootRef = FirebaseDatabase.getInstance().getReference("notes");
+        DatePicker datePicker = (DatePicker) v.findViewById(R.id.calender);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        datePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
+
+            @Override
+            public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                //Toast.makeText(container.getContext(), "Date= "+ "Year=" + year + " Month=" + (month + 1) + " day=" + dayOfMonth, Toast.LENGTH_LONG).show();
+                AlertDialog.Builder alertName = new AlertDialog.Builder(getActivity());
+                final EditText editTextName1 = new EditText(getActivity());
+
+                String date = ""+year+"-"+month+"-"+dayOfMonth;
+                alertName.setTitle("Enter Notes for Date : "+ date);
+                alertName.setView(editTextName1);
+                LinearLayout layoutName = new LinearLayout(getActivity());
+                layoutName.setOrientation(LinearLayout.VERTICAL);
+                layoutName.addView(editTextName1); // displays the user input bar
+                alertName.setView(layoutName);
+
+                alertName.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        txt = editTextName1; // variable to collect user input
+                        collectInput(year, month, dayOfMonth); // analyze input (txt) in this method
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.cancel(); // closes dialog
+                    }
+                });
+
+                alertName.show();
+            }
+        });
 
         return v;
     }
 
-    @Override
+   // @Override
     public void onDateSelected(CalendarDate calDate) {
-        AlertDialog.Builder alertName = new AlertDialog.Builder(getActivity());
-        final EditText editTextName1 = new EditText(getActivity());
 
-        alertName.setTitle("Enter Notes for Date : "+ calDate.dayToString());
-        alertName.setView(editTextName1);
-        LinearLayout layoutName = new LinearLayout(getActivity());
-        layoutName.setOrientation(LinearLayout.VERTICAL);
-        layoutName.addView(editTextName1); // displays the user input bar
-        alertName.setView(layoutName);
-
-        alertName.setPositiveButton("Add", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                txt = editTextName1; // variable to collect user input
-                collectInput(calDate); // analyze input (txt) in this method
-            }
-        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                dialog.cancel(); // closes dialog
-                alertName.show();
-            }
-        });
     }
 
-    public void collectInput(CalendarDate calDate){
+    public void collectInput(int year, int month, int dayOfMonth){
         // convert edit text to string
         String getInput = txt.getText().toString();
 
@@ -97,8 +100,9 @@ public class HealthNotesFragment extends Fragment implements OnDateSelectedListe
         // add input into an data collection arraylist
         else {
 
+            String cDate = ""+year+"-"+month+"-"+dayOfMonth;
             String currUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            rootRef.child(currUid).child(calDate.dayToString()).addValueEventListener(new ValueEventListener() {
+            rootRef.child(currUid).child(cDate).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
                     if(snapshot.exists()){
@@ -113,7 +117,7 @@ public class HealthNotesFragment extends Fragment implements OnDateSelectedListe
             });
 
             getInput = prevNotes + " " + getInput;
-            rootRef.child(currUid).child(calDate.dayToString()).setValue(getInput)
+            rootRef.child(currUid).child(cDate).setValue(getInput)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
@@ -127,8 +131,7 @@ public class HealthNotesFragment extends Fragment implements OnDateSelectedListe
                         }
                     });
 
-            date.setText(calDate.dayToString());
-            day.setText(calDate.dayOfWeekToStringName());
+            date.setText(cDate);
             notes.setText(getInput);
         }
     }
