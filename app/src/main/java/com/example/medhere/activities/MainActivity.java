@@ -1,9 +1,11 @@
 package com.example.medhere.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,6 +20,7 @@ import com.amulyakhare.textdrawable.TextDrawable;
 import com.example.medhere.R;
 import com.example.medhere.authentication.LoginActivity;
 import com.example.medhere.authentication.SignUpActivity;
+import com.example.medhere.authentication.VerificationActivity;
 import com.example.medhere.base.BaseActivity;
 import com.example.medhere.fragments.FollowUpsReminderFragment;
 import com.example.medhere.fragments.HealthNotesFragment;
@@ -25,7 +28,9 @@ import com.example.medhere.fragments.HealthVitalsFragment;
 import com.example.medhere.fragments.MedicineRemainderFragment;
 import com.example.medhere.fragments.PastRecordsFragment;
 import com.example.medhere.fragments.ProfileFragment;
+import com.example.medhere.utils.GetOAuthToken;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,7 +40,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainActivity extends BaseActivity implements
         BottomNavigationView.OnNavigationItemSelectedListener{
 
-    ImageView thumbnail, notifications, settings;
+    private ImageView thumbnail, notifications, settings;
+    private FloatingActionButton scanPrescription;
     private TextDrawable mDrawableBuilder;
     private FirebaseAuth mAuth;
     private String currentUserID;
@@ -72,6 +78,7 @@ public class MainActivity extends BaseActivity implements
         thumbnail = findViewById(R.id.thumbnail);
         notifications = findViewById(R.id.notifications);
         settings = findViewById(R.id.settings);
+        scanPrescription = findViewById(R.id.new_visit_fab);
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
@@ -92,6 +99,13 @@ public class MainActivity extends BaseActivity implements
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+            }
+        });
+
+        scanPrescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ScanImageActivity.class));
             }
         });
 
@@ -171,5 +185,7 @@ public class MainActivity extends BaseActivity implements
         editor.putBoolean("isProfileOpnend",true);
         editor.commit();
     }
+
+
 
 }

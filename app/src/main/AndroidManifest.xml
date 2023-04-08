@@ -3,6 +3,10 @@
     package="com.example.medhere">
 
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.camera"></uses-feature>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ProfileDetailsActivity"></activity>
+        <activity
+            android:name=".activities.ScanImageActivity"
+            android:exported="false" />
+        <activity android:name=".activities.ProfileDetailsActivity" />
         <activity android:name=".activities.FingerPrintActivity" />
         <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".authentication.ForgotPasswordActivity" />
@@ -22,7 +29,9 @@
         <activity android:name=".activities.FollowUpsInputActivity" />
         <activity android:name=".activities.DetectedMedicinesActivity" />
         <activity android:name=".onBoardingActivities.UserDetailsActivity" />
-        <activity android:name=".onBoardingActivities.IntroActivity">
+        <activity
+            android:name=".onBoardingActivities.IntroActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
