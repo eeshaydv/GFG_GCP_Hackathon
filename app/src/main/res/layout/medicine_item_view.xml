@@ -91,7 +91,7 @@
         android:layout_marginTop="6dp">
 
         <Button
-            android:id="@+id/schedule_item_date"
+            android:id="@+id/edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/medicine_image"
@@ -104,7 +104,7 @@
             android:textColor="@color/intro_title_color" />
 
         <Button
-            android:id="@+id/schedule_item_time"
+            android:id="@+id/delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/medicine_image"
