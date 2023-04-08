@@ -33,6 +33,7 @@ public class HealthNotesFragment extends Fragment  {
     private DatabaseReference rootRef;
 
     private TextView date, day, notes;
+    private EditText txt;
     private String prevNotes = "";
 
     @Nullable
@@ -65,44 +66,19 @@ public class HealthNotesFragment extends Fragment  {
 
                 alertName.setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        String getInput = editTextName1.getText().toString();
-                        // ensure that user input bar is not empty
-                        if (getInput ==null || getInput.trim().equals("")){
-                            Toast.makeText(getActivity(), "Please add some Notes", Toast.LENGTH_LONG).show();
-                        }
-                        else {
-
-                            String currUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                            rootRef.child(currUid).child(cDate).setValue(getInput)
-                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void aVoid) {
-                                            Toast.makeText(getActivity(), "Notes Added Successfully!", Toast.LENGTH_LONG).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(Exception e) {
-                                            Toast.makeText(getActivity(), e.getMessage().toString(), Toast.LENGTH_LONG).show();
-                                        }
-                                    });
-
-                            date.setText(cDate);
-                            notes.setText(getInput);
-                        }
+                        txt = editTextName1; // variable to collect user input
+                        collectInput(year, month, dayOfMonth); // analyze input (txt) in this method
                     }
                 }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-
+                        date.setText(cDate);
                         String currUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                        rootRef.child(currUid).child(cDate).addValueEventListener(new ValueEventListener() {
+                        rootRef.child(currUid).child(cDate).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot snapshot) {
                                 if(snapshot.exists()){
-
+                                    prevNotes = snapshot.getValue().toString();
                                 }
-
                             }
 
                             @Override
@@ -110,9 +86,12 @@ public class HealthNotesFragment extends Fragment  {
 
                             }
                         });
-                        date.setText(cDate);
-                        notes.setText(prevNotes);
-                        prevNotes = "";
+
+                        if(!prevNotes.isEmpty()){
+                            notes.setText(prevNotes);
+                            prevNotes = "";
+                        }
+
                         dialog.cancel(); // closes dialog
                     }
                 });
@@ -124,5 +103,52 @@ public class HealthNotesFragment extends Fragment  {
         return v;
     }
 
+    public void collectInput(int year, int month, int dayOfMonth){
+        // convert edit text to string
+        String getInput = txt.getText().toString();
 
+
+        // ensure that user input bar is not empty
+        if (getInput ==null || getInput.trim().equals("")){
+            Toast.makeText(getActivity(), "Please add some Notes", Toast.LENGTH_LONG).show();
+        }
+        // add input into an data collection arraylist
+        else {
+
+            String cDate = ""+year+"-"+month+"-"+dayOfMonth;
+            String currUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            rootRef.child(currUid).child(cDate).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    if(snapshot.exists()){
+                        prevNotes = snapshot.getValue().toString();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+
+                }
+            });
+
+            getInput = prevNotes + " " + getInput;
+            rootRef.child(currUid).child(cDate).setValue(getInput)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(getActivity(), "Notes Added Successfully!", Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(Exception e) {
+                            Toast.makeText(getActivity(), e.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+            date.setText(cDate);
+            notes.setText(getInput);
+            prevNotes = "";
+        }
+    }
 }
