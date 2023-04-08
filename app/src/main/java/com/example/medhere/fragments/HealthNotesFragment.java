@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.medhere.R;
-import com.example.medhere.views.CustomCalendarView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,7 +33,6 @@ public class HealthNotesFragment extends Fragment  {
     private DatabaseReference rootRef;
 
     private TextView date, day, notes;
-    private EditText txt;
     private String prevNotes = "";
 
     @Nullable
@@ -57,8 +55,8 @@ public class HealthNotesFragment extends Fragment  {
                 AlertDialog.Builder alertName = new AlertDialog.Builder(getActivity());
                 final EditText editTextName1 = new EditText(getActivity());
 
-                String date = ""+year+"-"+month+"-"+dayOfMonth;
-                alertName.setTitle("Enter Notes for Date : "+ date);
+                String cDate = ""+year+"-"+month+"-"+dayOfMonth;
+                alertName.setTitle("Enter Notes for Date : "+ cDate);
                 alertName.setView(editTextName1);
                 LinearLayout layoutName = new LinearLayout(getActivity());
                 layoutName.setOrientation(LinearLayout.VERTICAL);
@@ -67,11 +65,54 @@ public class HealthNotesFragment extends Fragment  {
 
                 alertName.setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        txt = editTextName1; // variable to collect user input
-                        collectInput(year, month, dayOfMonth); // analyze input (txt) in this method
+                        String getInput = editTextName1.getText().toString();
+                        // ensure that user input bar is not empty
+                        if (getInput ==null || getInput.trim().equals("")){
+                            Toast.makeText(getActivity(), "Please add some Notes", Toast.LENGTH_LONG).show();
+                        }
+                        else {
+
+                            String currUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                            rootRef.child(currUid).child(cDate).setValue(getInput)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Toast.makeText(getActivity(), "Notes Added Successfully!", Toast.LENGTH_LONG).show();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(Exception e) {
+                                            Toast.makeText(getActivity(), e.getMessage().toString(), Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+
+                            date.setText(cDate);
+                            notes.setText(getInput);
+                        }
                     }
                 }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
+
+                        String currUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        rootRef.child(currUid).child(cDate).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot snapshot) {
+                                if(snapshot.exists()){
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError error) {
+
+                            }
+                        });
+                        date.setText(cDate);
+                        notes.setText(prevNotes);
+                        prevNotes = "";
                         dialog.cancel(); // closes dialog
                     }
                 });
@@ -83,56 +124,5 @@ public class HealthNotesFragment extends Fragment  {
         return v;
     }
 
-   // @Override
-    public void onDateSelected(CalendarDate calDate) {
 
-    }
-
-    public void collectInput(int year, int month, int dayOfMonth){
-        // convert edit text to string
-        String getInput = txt.getText().toString();
-
-
-        // ensure that user input bar is not empty
-        if (getInput ==null || getInput.trim().equals("")){
-            Toast.makeText(getActivity(), "Please add some Notes", Toast.LENGTH_LONG).show();
-        }
-        // add input into an data collection arraylist
-        else {
-
-            String cDate = ""+year+"-"+month+"-"+dayOfMonth;
-            String currUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            rootRef.child(currUid).child(cDate).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot snapshot) {
-                    if(snapshot.exists()){
-                        prevNotes = snapshot.getValue().toString();
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError error) {
-
-                }
-            });
-
-            getInput = prevNotes + " " + getInput;
-            rootRef.child(currUid).child(cDate).setValue(getInput)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(getActivity(), "Notes Added Successfully!", Toast.LENGTH_LONG).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(Exception e) {
-                            Toast.makeText(getActivity(), e.getMessage().toString(), Toast.LENGTH_LONG).show();
-                        }
-                    });
-
-            date.setText(cDate);
-            notes.setText(getInput);
-        }
-    }
 }

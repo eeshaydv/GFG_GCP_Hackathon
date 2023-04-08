@@ -28,7 +28,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
-                    android:background="@color/colorPrimaryDark" />
+                    android:background="@color/back" />
 
 
 
@@ -293,7 +293,7 @@
                         android:layout_marginRight="16dp"
                         android:background="@drawable/button"
                         android:text="Edit Details"
-                        android:textSize="12sp"
+                        android:textSize="10sp"
                         android:textColor="@android:color/white" />
 
                     <ProgressBar
