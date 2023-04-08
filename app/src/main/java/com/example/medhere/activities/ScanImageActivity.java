@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.accounts.Account;
@@ -18,8 +19,10 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +31,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.medhere.BuildConfig;
 import com.example.medhere.R;
 import com.example.medhere.utils.GetOAuthToken;
 import com.google.android.gms.auth.GoogleAuthUtil;
@@ -58,6 +62,7 @@ public class ScanImageActivity extends AppCompatActivity {
     private final String TAG = "andriodcloudvision";
     static final int REQUEST_GALLERY_IMAGE = 100;
 
+    private Uri imageToUploadUri;
     static final int CAMERA_REQUEST = 103;
     static final int REQUEST_CODE_PICK_ACCOUNT = 101;
     static final int REQUEST_ACCOUNT_AUTHORIZATION = 102;
@@ -74,6 +79,9 @@ public class ScanImageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_image);
+
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
 
         mProgressDialog = new ProgressDialog(this);
 
@@ -114,9 +122,12 @@ public class ScanImageActivity extends AppCompatActivity {
         myAlertDialog.setNegativeButton("Camera",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
-                        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                        startActivityForResult(cameraIntent, CAMERA_REQUEST);
-
+                        Intent chooserIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        File f = new File(Environment.getExternalStorageDirectory(), "POST_IMAGE.jpg");
+                        chooserIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                        chooserIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                        imageToUploadUri = FileProvider.getUriForFile(ScanImageActivity.this, BuildConfig.APPLICATION_ID + ".provider", f);;
+                        startActivityForResult(chooserIntent, CAMERA_REQUEST);
                     }
                 });
         myAlertDialog.show();
@@ -156,9 +167,19 @@ public class ScanImageActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if ((requestCode == REQUEST_GALLERY_IMAGE || requestCode == CAMERA_REQUEST)&& resultCode == RESULT_OK && data != null) {
-            performCloudVisionRequest(data.getData());
-        } else if (requestCode == REQUEST_CODE_PICK_ACCOUNT) {
+        if (requestCode == REQUEST_GALLERY_IMAGE && resultCode == RESULT_OK && data != null) {
+            try {
+                performCloudVisionRequest(data.getData());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }else if(requestCode == CAMERA_REQUEST && resultCode == RESULT_OK && imageToUploadUri != null){
+            try {
+                performCloudVisionRequest(imageToUploadUri);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }else if (requestCode == REQUEST_CODE_PICK_ACCOUNT) {
             if (resultCode == RESULT_OK) {
                 String email = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
                 AccountManager am = AccountManager.get(this);
@@ -185,8 +206,14 @@ public class ScanImageActivity extends AppCompatActivity {
         }
     }
 
-    public void performCloudVisionRequest(Uri uri) {
-        if (uri != null) {
+    public void performCloudVisionRequest(Uri uri) throws IOException {
+        if(imageToUploadUri != null){
+            getContentResolver().notifyChange(imageToUploadUri, null);
+            Bitmap reducedSizeBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageToUploadUri);
+            callCloudVision(reducedSizeBitmap);
+            selectedImage.setImageBitmap(reducedSizeBitmap);
+        }
+        else if (uri != null) {
             try {
                 Bitmap bitmap = resizeBitmap(
                         MediaStore.Images.Media.getBitmap(getContentResolver(), uri));
