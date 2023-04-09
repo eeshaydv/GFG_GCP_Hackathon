@@ -224,10 +224,5 @@ if len(user_symptoms)!=0:
                 td+=(str(j) + " Disease name:"+str(diseases[key])+ "\tProbability:"+str(round(prob, 2))+"%"+"\n")
                 topk_index_mapping[j] = key
                 j += 1
-            message("\nTop 5 diseases predicted based on symptoms\n"+td+"\n"+"\nMore details about the disease? Enter index of disease or '-1' to discontinue and close the system:\n")
-            select = st.text_input("you:3")
-            if len(select)!=0:
-                if select!=-1:
-                    dis=diseases[topk_index_mapping[int(select)]]
-                    print()
-                    message(diseaseDetail(dis))
+            message("\nTop diseases predicted based on symptoms\n"+td+"\n")
+           
