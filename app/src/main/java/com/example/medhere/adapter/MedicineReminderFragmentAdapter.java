@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.example.medhere.R;
+import com.example.medhere.models.FollowUpReminder;
 import com.example.medhere.models.MedicineReminder;
 import com.google.firebase.database.DatabaseReference;
 
@@ -40,7 +41,10 @@ public class MedicineReminderFragmentAdapter extends RecyclerView.Adapter<Medici
 
     @Override
     public void onBindViewHolder(@NonNull HolderCallHistory holder, int position) {
-
+        MedicineReminder reminder = medicineReminders.get(position);
+        holder.medicineName.setText(reminder.getName());
+        holder.medicineTime.setText(reminder.getTime());
+        holder.medicineQuantity.setText(reminder.getQuantity());
     }
 
     @Override

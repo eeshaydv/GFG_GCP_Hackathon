@@ -41,6 +41,11 @@ public class FollowUpReminderFragmentAdapter extends RecyclerView.Adapter<Follow
     @Override
     public void onBindViewHolder(@NonNull FollowUpReminderFragmentAdapter.HolderCallHistory holder, int position) {
 
+    FollowUpReminder reminder = followUpReminders.get(position);
+    holder.doctorName.setText(reminder.getDoctorName());
+    holder.dateOfFollowUp.setText(reminder.getDateOfVisit());
+    holder.timeOfFollowUp.setText(reminder.getTimeOfVisit());
+
     }
 
     @Override

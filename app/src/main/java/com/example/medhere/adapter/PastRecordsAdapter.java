@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.example.medhere.R;
+import com.example.medhere.models.FollowUpReminder;
 import com.example.medhere.models.MedicineReminder;
 import com.example.medhere.models.PastRecordItem;
 import com.google.firebase.database.DatabaseReference;
@@ -41,7 +42,9 @@ public class PastRecordsAdapter extends RecyclerView.Adapter<PastRecordsAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull PastRecordsAdapter.HolderCallHistory holder, int position) {
-
+        PastRecordItem reminder = pastRecordItems.get(position);
+        holder.doctorName.setText(reminder.getDoctorName());
+        holder.dateOfVisit.setText(reminder.getDateOfVisit());
     }
 
     @Override

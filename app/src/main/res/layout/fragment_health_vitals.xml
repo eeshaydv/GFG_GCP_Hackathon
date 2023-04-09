@@ -16,37 +16,36 @@
         android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
-    <com.github.mikephil.charting.charts.LineChart
+    <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/chart1"
         android:clickable="true"
         android:layout_margin="8dp"
         android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="180dp">
+        android:layout_height="180dp"/>
 
-        <com.github.mikephil.charting.charts.LineChart
+        <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/chart5"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:layout_margin="8dp"
             android:background="@color/white"
             android:clickable="true" />
-    </com.github.mikephil.charting.charts.LineChart>
-    <com.github.mikephil.charting.charts.LineChart
+    <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/chart2"
         android:layout_margin="8dp"
         android:clickable="true"
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="180dp"/>
-    <com.github.mikephil.charting.charts.LineChart
+    <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/chart3"
         android:background="@color/white"
         android:clickable="true"
         android:layout_margin="8dp"
         android:layout_width="match_parent"
         android:layout_height="180dp"/>
-    <com.github.mikephil.charting.charts.LineChart
+    <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/chart4"
         android:background="@color/white"
         android:clickable="true"
@@ -54,7 +53,7 @@
         android:layout_margin="8dp"
         android:layout_height="180dp"/>
 
-        <com.github.mikephil.charting.charts.LineChart
+        <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/chart6"
             android:background="@color/white"
             android:clickable="true"
