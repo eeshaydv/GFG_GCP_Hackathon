@@ -1,8 +1,8 @@
 # Hackfest2023
 
-Android App Code : Master Branch
-Disease Prediction Bot Code : chatbot Branch
-Rest of the backend Code : Backend Branch
+* Android App Code : Master Branch
+* Disease Prediction Bot Code : chatbot Branch
+* Rest of the backend Code : Backend Branch
 
 # medHERe 
 
