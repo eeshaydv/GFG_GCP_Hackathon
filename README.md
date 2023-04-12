@@ -1,4 +1,4 @@
-# Hackfest2023
+# Solving for India Hack-a-thon
 
 * Android App Code : Master Branch
 * Disease Prediction Bot Code : chatbot Branch
